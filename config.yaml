@@ -1,4 +1,4 @@
-baseURL: 'http://techinfo.gerull.nl/'
+baseURL: 'https://cgerull.github.io/techinfo'
 languageCode: 'en-us'
 title: 'techinfo.gerull.nl'
 theme: 'bootstrap'
