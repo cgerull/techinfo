@@ -1,0 +1,15 @@
+baseURL: 'http://techinfo.gerull.nl/'
+languageCode: 'en-us'
+title: 'techinfo.gerull.nl'
+theme: 'bootstrap'
+menus:
+  main:
+    -  identifier: "home"
+       name: "Home"
+       url: "/posts/"
+       weight: 10
+    -  identifier: "about"
+       name: "About"
+       url: "/about/"
+       weight: 80
+
