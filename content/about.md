@@ -1,6 +1,6 @@
 ---
-layout: page
 title: About
+draft: false
 ---
 
 I maintain this site as place to store cheat sheets, procedures and descriptions. Some of them I use so seldom that it's not worthwhile to memorize them. Other's are instructions I use for customers and are interesting enough to share. In short, you can read this site as an itinerary of my travels through Information Technology.
