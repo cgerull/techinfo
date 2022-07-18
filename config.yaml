@@ -1,7 +1,7 @@
 baseURL: 'https://cgerull.github.io/techinfo'
 languageCode: 'en-us'
 title: 'techinfo.gerull.nl'
-theme: 'bootstrap'
+theme: 'hugo-theme-bootstrap4-blog'
 menus:
   main:
     -  identifier: "home"
