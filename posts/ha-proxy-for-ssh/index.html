@@ -1,0 +1,44 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta property="og:title" content="HA Proxy as a reverse ssh proxy"><meta property="og:description" content="Configure haproxy to act as reverse proxy for ssh."><meta property="og:type" content="article"><meta property="og:url" content="https://cgerull.github.io/techinfo/posts/ha-proxy-for-ssh/"><meta property="article:published_time" content="2015-08-23T00:00:00+00:00"><meta property="article:modified_time" content="2015-08-23T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="HA Proxy as a reverse ssh proxy"><meta name=twitter:description content="Configure haproxy to act as reverse proxy for ssh."><meta name=generator content="Hugo 0.101.0"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"HA Proxy as a reverse ssh proxy","url":"https://cgerull.github.io/techinfo/posts/ha-proxy-for-ssh/","wordCount":"183","datePublished":"2015-08-23T00:00:00+00:00","dateModified":"2015-08-23T00:00:00+00:00","author":{"@type":"Person","name":null},"keywords":"Linux, Proxy, SSH","description":"Configure haproxy to act as reverse proxy for ssh."}</script><link rel=canonical href=https://cgerull.github.io/techinfo/posts/ha-proxy-for-ssh/><title>HA Proxy as a reverse ssh proxy | techinfo.gerull.nl</title><link href=https://cgerull.github.io/techinfo/css/style.beb8012edc08ba10be012f079d618dc243812267efe62e11f22fe49618f976a4.css rel=stylesheet integrity="sha256-vrgBLtwIuhC+AS8HnWGNwkOBImfv5i4R8i/klhj5dqQ=" crossorigin=anonymous><script defer src=https://cgerull.github.io/techinfo/js/fontawesome.min.f5072c55a0721857184db93a50561d7dc13975b4de2e19db7f81eb5f3fa57270.js integrity="sha256-9QcsVaByGFcYTbk6UFYdfcE5dbTeLhnbf4HrXz+lcnA=" crossorigin=anonymous></script></head><body><div class=blog-masthead><div class=container><nav class="nav blog-nav"><a class=nav-link href=https://cgerull.github.io/techinfo>Home</a></nav></div></div><header class=blog-header><div class=container><h1 class=blog-title dir=auto><a href=https://cgerull.github.io/techinfo rel=home>techinfo.gerull.nl</a></h1></div></header><div class=container><div class=row><div class="col-sm-8 blog-main"><article class=blog-post><header><h2 class=blog-post-title dir=auto><a href=https://cgerull.github.io/techinfo/posts/ha-proxy-for-ssh/>HA Proxy as a reverse ssh proxy</a></h2><p class=blog-post-meta><time datetime=2015-08-23T00:00:00Z>Sun Aug 23, 2015</time>
+in
+<span class="fas fa-folder" aria-hidden=true></span>&nbsp;<a href=/categories/linux/ rel="category tag">Linux</a>
+<span class="fas fa-tag" aria-hidden=true></span>&nbsp;<a href=/tags/proxy/ rel=tag>Proxy</a>, <a href=/tags/ssh/ rel=tag>SSH</a>, <a href=/tags/linux/ rel=tag>Linux</a></p></header><p>If you want to hide a ssh service to the public use a reverse ssh proxy. Just
+as Apache can act as a reverse http / https proxy, so can HA Proxy act as a
+reverse ssh proxy.</p><p>Why just don’t use port forwarding? Well, suppose you have a service like
+GitHub,GitLab or Bitbucket to serve your upstream Git repository and you want to access your
+reverse proxy host and your service host by ssh on port 22? Then <a href=http://www.haproxy.org>HAProxy</a> is in my
+opinion the easiest option to forward the SSL service port to a backend server.</p><p>Bear in mind to upgrade your firewall on the proxy host.</p><p>Here is a sample configuration file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># This config needs haproxy-1.1.28 or haproxy-1.2.1 </span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Customized to use a ssh proxy</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>global
+</span></span><span style=display:flex><span>log 127.0.0.1 local0
+</span></span><span style=display:flex><span><span style=color:#75715e>#log 127.0.0.1 local1 notice</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#log loghost local0 info</span>
+</span></span><span style=display:flex><span>maxconn <span style=color:#ae81ff>4096</span>
+</span></span><span style=display:flex><span>user haproxy
+</span></span><span style=display:flex><span>group haproxy
+</span></span><span style=display:flex><span>daemon
+</span></span><span style=display:flex><span><span style=color:#75715e>#debug</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#quiet</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>defaults
+</span></span><span style=display:flex><span>log global
+</span></span><span style=display:flex><span>option dontlognull
+</span></span><span style=display:flex><span>retries <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>option redispatch
+</span></span><span style=display:flex><span>maxconn <span style=color:#ae81ff>2000</span>
+</span></span><span style=display:flex><span>contimeout <span style=color:#ae81ff>5000</span>
+</span></span><span style=display:flex><span>clitimeout <span style=color:#ae81ff>50000</span>
+</span></span><span style=display:flex><span>srvtimeout <span style=color:#ae81ff>50000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>frontend sshd
+</span></span><span style=display:flex><span>bind *: &lt;port&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>default_backend ssh
+</span></span><span style=display:flex><span>timeout client 1h
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>backend ssh
+</span></span><span style=display:flex><span>mode tcp
+</span></span><span style=display:flex><span>server &lt;server-ip:check port
+</span></span></code></pre></div><hr><footer><section><h4>Share</h4><nav class="nav sharing-icons"><a class=nav-item href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcgerull.github.io%2ftechinfo%2fposts%2fha-proxy-for-ssh%2f" title="Share on Facebook"><span class="fab fa-facebook-f fa-2x" aria-hidden=true></span></a>
+<a class=nav-item href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fcgerull.github.io%2ftechinfo%2fposts%2fha-proxy-for-ssh%2f" title="Share on LinkedIn"><span class="fab fa-linkedin-in fa-2x" aria-hidden=true></span></a>
+<a class=nav-item href="https://twitter.com/intent/tweet?url=https%3a%2f%2fcgerull.github.io%2ftechinfo%2fposts%2fha-proxy-for-ssh%2f&text=HA%20Proxy%20as%20a%20reverse%20ssh%20proxy" title="Tweet this"><span class="fab fa-twitter fa-2x"></span></a></nav></section></footer></article></div><aside class="col-sm-3 ml-auto blog-sidebar"></aside></div></div><footer class=blog-footer><p dir=auto>Blog template created by <a href=https://twitter.com/mdo>@mdo</a>, ported to Hugo by <a href=https://twitter.com/mralanorth>@mralanorth</a>.</p><p><a href=#>Back to top</a></p></footer></body></html>
