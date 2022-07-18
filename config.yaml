@@ -1,7 +1,12 @@
 baseURL: 'https://cgerull.github.io/techinfo'
 languageCode: 'en-us'
 title: 'techinfo.gerull.nl'
-theme: 'hugo-theme-bootstrap4-blog'
+theme: 'minimal'
+params:
+    author: "Claus Gerull"
+    description: "Personal collection of IT recepies."
+    githubUsername: "#"
+    accent: "red"
 menus:
   main:
     -  identifier: "home"
