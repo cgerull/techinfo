@@ -1,10 +1,10 @@
-baseURL: 'https://cgerull.github.io/techinfo'
+baseURL: 'https://techinfo.gerull.nl'
 languageCode: 'en-us'
 title: 'techinfo.gerull.nl'
 theme: 'minimal'
 params:
     author: "Claus Gerull"
-    description: "Personal collection of IT recepies."
+    description: "Personal collection of IT recipies."
     githubUsername: "#"
     accent: "red"
 menus:
