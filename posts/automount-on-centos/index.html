@@ -1,0 +1,67 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Install and configure automount on CentOS 7</title><style>html body{font-family:'',sans-serif;background-color:#fff}:root{--accent:red;--border-width:0}</style><link rel=stylesheet href=https://techinfo.gerull.nl/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family="><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script>$(document).on("click",function(){$(".collapse").collapse("hide")})</script><meta name=generator content="Hugo 0.101.0"><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class=container><div class=navbar-header><a class="navbar-brand visible-xs" href=#>Install and configure automount on CentOS 7</a>
+<button class=navbar-toggle data-target=.navbar-collapse data-toggle=collapse>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href=/posts/>Home</a></li><li><a href=/about/>About</a></li></ul></div></div></nav><main><div><h2>Install and configure automount on CentOS 7</h2><h5>Notes on autofs for RH family Linux.</h5></div><div align=start class=content><p>Recipe to configure the automount feature on RedHat / CentOS7 Linux.</p><h2 id=prerequisities>Prerequisities</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># First install autofs</span>
+</span></span><span style=display:flex><span>yum install -y autofs cifs-utils
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Now enable and , if ready, start the daemon</span>
+</span></span><span style=display:flex><span>systemctl enable autofs
+</span></span></code></pre></div><h2 id=configuration>Configuration</h2><p>The system is now ready for configuration.</p><h3 id=autofs-system-configuration>autofs system configuration</h3><p>Normally <code>/etc/sysconfig/autofs</code> is ready to use. However to get more debug logging uncomment add these options.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use OPTIONS to add automount(8) command line options that</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># will be used when the daemon is started.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>OPTIONS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;--debug --verbose&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span></code></pre></div><h3 id=main-configuration-is-in-etcautomaster>Main configuration is in <code>/etc/auto.master</code></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This is a &#39;master&#39; automounter map and it has the following format:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># mount-point [map-type[,format]:]map [options]</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># For details of the format look at auto.master(5).</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>/misc   /etc/auto.misc
+</span></span><span style=display:flex><span>/vagrant    /etc/auto.vagrant
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># NOTE: mounts done from a hosts map will be mounted with the</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#       &#34;nosuid&#34; and &#34;nodev&#34; options unless the &#34;suid&#34; and &#34;dev&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#       options are explicitly given.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>/net    -hosts
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Include /etc/auto.master.d/*.autofs</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># The included files must conform to the format of this file.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>+dir:/etc/auto.master.d
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Include central master map if it can be found using</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># nsswitch sources.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Note that if there are entries for /net or /misc (as</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># above) in the included master map any keys that are the</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># same will not be seen as the first read key seen takes</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># precedence.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>+auto.master
+</span></span></code></pre></div><h3 id=configuration-for-a-smb-share>Configuration for a SMB share</h3><p>To avoid hardcoding your credentials into world readable file create a credential file
+in your home.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># User credentials for SMB share</span>
+</span></span><span style=display:flex><span>username<span style=color:#f92672>=</span>&lt;username&gt;
+</span></span><span style=display:flex><span>password<span style=color:#f92672>=</span>&lt;password&gt;
+</span></span><span style=display:flex><span><span style=color:#75715e># Optional</span>
+</span></span><span style=display:flex><span>domain<span style=color:#f92672>=</span>&lt;domain name&gt;
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This is an automounter map and it has the following format</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># key [ -mount-options-separated-by-comma ] location</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Details may be found in the autofs(5) manpage</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># folder to mount = `provisioning`</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># mount options = `-fstype=cifs,credentials=/home/vagrant/.secret`</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># share URL = `://NLDT-11695/provisioning`</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Eventually add these options as well:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># sec=ntlmv2</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># uid=&lt;username or UID&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># gid=&lt;groupname or GID&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># vers=1.0  Set SMB version to 1.0 if Kernel &gt; 4.13</span>
+</span></span><span style=display:flex><span>provisioning   -fstype<span style=color:#f92672>=</span>cifs,rw,credentials<span style=color:#f92672>=</span>/home/vagrant/.secret    ://NLDT-11695/provisioning
+</span></span></code></pre></div><h2 id=running>Running</h2><p>Start the autofs daemon with <code>systemctl start autofs</code></p><p>Try <code>ls &lt;mounted directory></code>, e.g <code>ls /vagrant/provisioning</code> the automounter should now mount the share.</p><p>If anything goes wrong, check <code>/var/log/messages</code></p><blockquote><p>Once you configuration is running, you can uncomment the verbose logging options in
+<code>/etc/sysconfig/autofs</code>.</p></blockquote><p>See also:</p><ul><li><a href=https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/mounting_an_smb_share>RedHat mounting ans SMB share</a></li><li><a href=https://linuxconfig.org/how-to-configure-the-autofs-daemon-on-centos-7-rhel-7>How to configure autofs</a></li></ul></div></main><footer><p class="copyright text-muted">© 2022 C. Gerull All rights reserved. Powered by <a href=https://gohugo.io>Hugo</a> and <a href=https://github.com/calintat/minimal>Minimal</a>.</p></footer></body></html>
