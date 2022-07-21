@@ -5,14 +5,23 @@ theme: 'minimal'
 params:
     author: "Claus Gerull"
     description: "Personal collection of IT recipies."
+    copyright: "&copy; 2022 C. Gerull All rights reserved."
     githubUsername: "#"
-    accent: "red"
+    accent: "brown"
+    showBorder: true
+    highlight: true
+    highlightStyle: "solarized-dark"
+    highlightLanguages: ["go", "python", "bash", "zsh", "java"]
 menus:
   main:
     -  identifier: "home"
        name: "Home"
        url: "/posts/"
        weight: 10
+    -  identifier: "tags"
+       name: "Tags"
+       url: "/tags/"
+       weight: 20
     -  identifier: "about"
        name: "About"
        url: "/about/"

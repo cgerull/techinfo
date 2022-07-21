@@ -3,7 +3,7 @@ categories:
     - git
 date: "2019-07-08T13:13:17Z"
 description: Notes on migrating Mercurial to Git repositories.
-tag: 
+tags: 
     - git
     - mercurial 
     - repositories

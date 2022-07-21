@@ -1,5 +1,6 @@
 ---
 title: About
+description: Some words about this personal site.
 draft: false
 ---
 
@@ -7,6 +8,6 @@ I maintain this site as place to store cheat sheets, procedures and descriptions
 
 Publishing them all in a public place will help others too.
 
-# Myself
+## Myself
 
-Living and working in the Netherlands, I'm in the IT over 30 years now. Currently my job is a consultant for development tooling with GitHub and the Atlassian suite of tools as speciality. But in the past I was involved with many aspects from technical enginering to development.
+Living and working in the Netherlands, I'm in the IT over 30 years now. Currently my position is senior engineer for Kubernetes and containerized services. In the past I was involved with many aspects from technical enginering to development.

@@ -1,5 +1,6 @@
 ---
 title: "New Static Generator"
+description: "Hugo fast and easy site generator."
 date: 2022-07-14T23:01:12+02:00
 draft: false
 ---
