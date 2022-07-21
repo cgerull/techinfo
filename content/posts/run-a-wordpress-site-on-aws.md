@@ -4,7 +4,7 @@ categories:
     - wordpress
 date: "2020-06-13T20:13:17Z"
 description: Setup a WordPress site with Bitnami and Lightsail.
-tag:
+tags:
     - aws
     - wordpress
     - lightsail

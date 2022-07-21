@@ -3,7 +3,7 @@ categories:
     - Linux
 date: "2019-01-10T08:13:17Z"
 description: A guide to reorganize Linux LVM disks.
-tag: 
+tags: 
     - linux
     - lvm
     - partitions

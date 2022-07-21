@@ -3,7 +3,7 @@ categories:
   - devops
 date: "2020-01-10T14:13:17Z"
 description: Tricks to setup and use Docker swarm.
-tag:
+tags:
   - docker
 title: Docker Swarm tricks
 draft: false

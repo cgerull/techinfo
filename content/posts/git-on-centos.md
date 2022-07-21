@@ -3,7 +3,7 @@ categories:
     - git
 date: "2019-08-05T08:13:17Z"
 description: Two ways to install a recent Git version on CentOS.
-tag: 
+tags: 
     - git
     - centos
 title: Install a recent Git on CentOS 7

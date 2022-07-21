@@ -1,10 +1,10 @@
 ---
 categories:
-    - Git
+    - git
 date: "2016-03-23T22:23:17Z"
 description: A brief description how to simplyfy Git merge operations.
-tag: 
-    - Git
+tags: 
+    - git
 title: Git rebase
 draft: false
 ---

@@ -3,7 +3,7 @@ categories:
     - Git
 date: "2018-11-27T07:13:17Z"
 description: Resources and instruction how to use git-lfs.
-tag: 
+tags: 
     - Git
 title: Use large files with git-lfs
 draft: false

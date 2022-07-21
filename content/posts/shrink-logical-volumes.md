@@ -1,14 +1,14 @@
 ---
 categories:
-- Linux
+  - linux
 comment: false
 date: "2014-04-08T00:00:00Z"
 description: Use LVM2 to shrink volumes on the fly.
 tags:
-- File System
-- Install
-- Linux
-- Logical Volumes
+  - file system
+  - install
+  - linux
+  - lvm
 title: Shrink logic volumes
 draft: false
 ---

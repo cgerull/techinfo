@@ -4,7 +4,7 @@ categories:
    - development
 date: "2020-02-20T18:01:00Z"
 description: Get and add a root certificate to the java keystore.
-tag:
+tags:
    - java
    - ssl
 title: Java keystore

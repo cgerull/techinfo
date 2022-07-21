@@ -3,7 +3,7 @@ categories:
     - linux
 date: "2019-09-19T07:13:17Z"
 description: Install and run a virtual machine on your host.
-tag:
+tags:
     - linux
     - vagrant
     - virtualBox

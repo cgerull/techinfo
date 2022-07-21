@@ -1,13 +1,13 @@
 ---
 categories:
-- Linux
+    - linux
 comment: false
 date: "2014-02-22T00:00:00Z"
 description: My implementation of Linux FHS
 tags:
-- File System
-- Install
-- Linux
+    - file system
+    - install
+    - linux
 title: Linux File System
 ---
 

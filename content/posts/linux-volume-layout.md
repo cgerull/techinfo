@@ -1,14 +1,14 @@
 ---
 categories:
-- Linux
+  - linux
 comment: false
 date: "2014-03-01T00:00:00Z"
 description: Linux FHS with LVM2
 tags:
-- File System
-- Installation
-- Linux
-- Logical Volumes
+  - file system
+  - install
+  - linux
+  - lvm
 title: Volume layout
 draft: false
 ---

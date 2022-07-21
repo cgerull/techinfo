@@ -1,13 +1,13 @@
 ---
 categories:
-- Linux
+    - linux
 comment: false
 date: "2015-08-23T00:00:00Z"
 description: Configure haproxy to act as reverse proxy for ssh.
 tags:
-- Proxy
-- SSH
-- Linux
+    - proxy
+    - ssh
+    - linux
 title: HA Proxy as a reverse ssh proxy
 draft: false
 ---

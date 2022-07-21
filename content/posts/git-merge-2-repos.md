@@ -1,10 +1,10 @@
 ---
 categories:
-    - Git
+    - git
 date: "2018-09-04T12:23:17Z"
 description: Merge 2 unrelated repositories into one.
-tag:
-    - Git
+tags:
+    - git
 title: Merge 2 Git repositories
 ---
 

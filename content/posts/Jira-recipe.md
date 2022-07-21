@@ -1,11 +1,11 @@
 ---
 categories:
-    - Atlassian
+    - atlassian
 date: "2018-12-16T17:37:10Z"
 description: Install or upgrade Atlassian Jira with the binary installer on Linux.
-tag: 
-    - Jira
-    - Atlassian
+tags: 
+    - jira
+    - atlassian
 title: Jira recipe
 draft: false
 ---

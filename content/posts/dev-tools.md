@@ -3,7 +3,7 @@ categories:
   - devops
 date: "2019-12-25T16:13:17Z"
 description: Useful dev tools and their setup on different platforms.
-tag:
+tags:
   - linux
   - macos
   - windows

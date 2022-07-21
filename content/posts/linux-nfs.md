@@ -4,7 +4,7 @@ categories:
     - linux
 date: "2020-04-15T11:14:00Z"
 description: Install a NFS server on Debian/Ubuntu and CentOS.
-tag:
+tags:
     - linux
     - nfs
 title: Linux NFS server
