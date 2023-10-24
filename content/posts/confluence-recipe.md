@@ -4,11 +4,17 @@ categories:
 date: "2018-12-18T08:13:17Z"
 description: Steps to install / upgrade Confluence with the Atlassian bin installer
   on Linux.
-tags: 
-  - Confluence
+# List of authors of the post.
+authors:
+  - claus-gerull
+tags:
   - Atlassian
 title: Confluence recipe
 draft: false
+# Set how many table of contents levels to be showed on page.
+geekblogToC: 3
+# Add an anchor link to headlines.
+geekblogAnchor: true
 ---
 
 
@@ -72,5 +78,3 @@ To re-configure the connection follow these steps:
 1) test, and if necessary reconfigure, crowd
 1) sync crowd
 1) login as LDAP user
-
-

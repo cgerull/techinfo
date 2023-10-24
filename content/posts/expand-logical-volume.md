@@ -4,11 +4,11 @@ categories:
 comment: false
 date: "2014-03-23T00:00:00Z"
 description: Use LVM2 to expand volumes on the fly.
+authors:
+  - claus-gerull
 tags:
-    - file system
-    - install
     - linux
-    - lvm
+
 title: Expand logic volumes
 draft: false
 ---

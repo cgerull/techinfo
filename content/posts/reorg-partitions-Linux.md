@@ -3,10 +3,10 @@ categories:
     - Linux
 date: "2019-01-10T08:13:17Z"
 description: A guide to reorganize Linux LVM disks.
-tags: 
-    - linux
-    - lvm
-    - partitions
+authors:
+  - claus-gerull
+tags:
+  - linux
 title: Reorganize physical volumes
 draft: false
 ---

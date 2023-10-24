@@ -4,10 +4,10 @@ categories:
 comment: false
 date: "2014-02-22T00:00:00Z"
 description: My implementation of Linux FHS
+authors:
+  - claus-gerull
 tags:
-    - file system
-    - install
-    - linux
+  - linux
 title: Linux File System
 ---
 

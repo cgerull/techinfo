@@ -3,8 +3,10 @@ categories:
   - devops
 date: "2020-01-10T14:13:17Z"
 description: Tricks to setup and use Docker swarm.
+authors:
+  - claus-gerull
 tags:
-  - docker
+  - devops
 title: Docker Swarm tricks
 draft: false
 ---
@@ -14,7 +16,7 @@ Tools and settings to help you run Docker Swarm.
 
 ## Docker swarm configuration
 
-Set a networkpool for Docker's interface. Defining it in the daemon configuration avoid random 
+Set a networkpool for Docker's interface. Defining it in the daemon configuration avoid random
 network that will interfere with any existing network segments on your site.
 
 ```json

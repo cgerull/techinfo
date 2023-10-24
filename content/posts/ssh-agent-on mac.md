@@ -4,8 +4,10 @@ categories:
 date: "2018-09-11T22:44:17Z"
 description: Configure SSH to use an agent to cache the passphrase from the Mac OS
   keychain.
-tags: 
-  - macos
+authors:
+  - claus-gerull
+tags:
+  - devops
 title: Use ssh agent on Mac OS
 ---
 

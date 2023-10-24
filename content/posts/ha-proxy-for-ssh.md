@@ -4,22 +4,22 @@ categories:
 comment: false
 date: "2015-08-23T00:00:00Z"
 description: Configure haproxy to act as reverse proxy for ssh.
+authors:
+  - claus-gerull
 tags:
-    - proxy
-    - ssh
     - linux
 title: HA Proxy as a reverse ssh proxy
 draft: false
 ---
 
-If you want to hide a ssh service to the public use a reverse ssh proxy. Just 
-as Apache can act as a reverse http / https proxy, so can HA Proxy act as a 
+If you want to hide a ssh service to the public use a reverse ssh proxy. Just
+as Apache can act as a reverse http / https proxy, so can HA Proxy act as a
 reverse ssh proxy.
 <!--more-->
 
-Why just don’t use port forwarding? Well, suppose you have a service like 
-GitHub,GitLab or Bitbucket to serve your upstream Git repository and you want to access your 
-reverse proxy host and your service host by ssh on port 22? Then [HAProxy](http://www.haproxy.org) is in my 
+Why just don’t use port forwarding? Well, suppose you have a service like
+GitHub,GitLab or Bitbucket to serve your upstream Git repository and you want to access your
+reverse proxy host and your service host by ssh on port 22? Then [HAProxy](http://www.haproxy.org) is in my
 opinion the easiest option to forward the SSL service port to a backend server.
 
 Bear in mind to upgrade your firewall on the proxy host.
@@ -27,7 +27,7 @@ Bear in mind to upgrade your firewall on the proxy host.
 Here is a sample configuration file.
 
 ```shell
-# This config needs haproxy-1.1.28 or haproxy-1.2.1 
+# This config needs haproxy-1.1.28 or haproxy-1.2.1
 # Customized to use a ssh proxy
 
 global

@@ -1,12 +1,12 @@
 ---
 categories:
-    - git
+  - git
 date: "2019-07-08T13:13:17Z"
 description: Notes on migrating Mercurial to Git repositories.
-tags: 
-    - git
-    - mercurial 
-    - repositories
+authors:
+  - claus-gerull
+tags:
+  - development
 title: Convert Mercurial to Git repositories
 draft: false
 ---
@@ -36,7 +36,7 @@ git clone https://github.com/frej/fast-export.git
 git checkout tags/v180317
 
 # Clone mercurial repository and extract authors
-# Use the --insecure switch if you are cloning from an internal 
+# Use the --insecure switch if you are cloning from an internal
 # server with self-signed certificates
 hg clone https://<url-to-my-hg-repository>/ tmp/hg-my-repository
 cd tmp/hg-my-repository
@@ -58,5 +58,5 @@ git branch
 
 Now we have the repository with the complete history in git.
 
-Next steps can be to (re-)organize the branches to match your Git's policy and to add a remote and upload 
+Next steps can be to (re-)organize the branches to match your Git's policy and to add a remote and upload
 the repository to your project's Git server.

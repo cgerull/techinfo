@@ -3,8 +3,9 @@ categories:
     - linux
 date: "2019-08-12T10:13:17Z"
 description: Notes on autofs for RH family Linux.
-tags: 
-    - centos
+authors:
+  - claus-gerull
+tags:
     - linux
 title: Install and configure automount on CentOS 7
 draft: false

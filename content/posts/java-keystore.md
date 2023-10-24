@@ -1,12 +1,14 @@
 ---
-categories:
-   - devops
-   - development
+# categories:
+#    - devops
+#    - development
 date: "2020-02-20T18:01:00Z"
 description: Get and add a root certificate to the java keystore.
+authors:
+  - claus-gerull
 tags:
-   - java
-   - ssl
+  - development
+  - devops
 title: Java keystore
 draft: false
 ---

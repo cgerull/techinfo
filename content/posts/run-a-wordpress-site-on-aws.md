@@ -4,10 +4,10 @@ categories:
     - wordpress
 date: "2020-06-13T20:13:17Z"
 description: Setup a WordPress site with Bitnami and Lightsail.
+authors:
+  - claus-gerull
 tags:
-    - aws
-    - wordpress
-    - lightsail
+    - devops
 title: Run a WordPress site on AWS
 draft: false
 ---

@@ -3,8 +3,10 @@ categories:
     - git
 date: "2018-09-04T12:23:17Z"
 description: Merge 2 unrelated repositories into one.
+authors:
+  - claus-gerull
 tags:
-    - git
+  - development
 title: Merge 2 Git repositories
 ---
 
@@ -19,13 +21,13 @@ Sometimes it is necessary to combine 2 different Git repositories with preservat
 ```
 git remote add <tmp name of 2nd repo> <URL of second repo>
 ```
-- Pull the second repo with 
+- Pull the second repo with
 ```
 git pull <tmp name of 2nd repo> master --allow-unrelated-histories
 ```
 - The repositories are now merged.
 - If necessary move anything around with `git mv`
-- Remove the second remote entry 
+- Remove the second remote entry
 ```
 git remote rm <tmp name of 2nd repo>
 ```

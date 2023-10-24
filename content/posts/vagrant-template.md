@@ -3,10 +3,10 @@ categories:
     - linux
 date: "2019-09-19T07:13:17Z"
 description: Install and run a virtual machine on your host.
+authors:
+  - claus-gerull
 tags:
     - linux
-    - vagrant
-    - virtualBox
 title: Vagrant template
 draft: false
 ---

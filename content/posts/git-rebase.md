@@ -3,8 +3,10 @@ categories:
     - git
 date: "2016-03-23T22:23:17Z"
 description: A brief description how to simplyfy Git merge operations.
-tags: 
-    - git
+authors:
+  - claus-gerull
+tags:
+    - development
 title: Git rebase
 draft: false
 ---
@@ -29,7 +31,7 @@ $ git lg
 * 217709e Add fourth file.
 | * f20dfb3 (b1) Add more content
 | * 2e5d2df Add third file.
-|/  
+|/
 * df37868 Add second file
 * fd37cc9 Initial commit.
 ```
@@ -44,12 +46,12 @@ $ git lg
 * 217709e Add fourth file.
 | * f20dfb3 (HEAD, b1) Add more content
 | * 2e5d2df Add third file.
-|/  
+|/
 * df37868 Add second file
 * fd37cc9 Initial commit.
 ```
 
-Now execute the rebase command. What this command actually does goes as follow. 
+Now execute the rebase command. What this command actually does goes as follow.
 First the changes are save to a temporare place. The commit df37868 is checked out. Now Git applies the commits 217709e and 6350dfa. At last the saved changes 2e5d2df and f20dfb3 are applied.
 The repository contains the same changes, but looks a lot clearer.
 

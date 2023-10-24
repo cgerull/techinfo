@@ -4,18 +4,17 @@ categories:
 comment: false
 date: "2014-03-01T00:00:00Z"
 description: Linux FHS with LVM2
+authors:
+  - claus-gerull
 tags:
-  - file system
-  - install
   - linux
-  - lvm
 title: Volume layout
 draft: false
 ---
 
-Here's my personal preference for an allround Linux box. The following volume 
-layout is a baseline. If the machine is a server reduce /home and add much more 
-to /var where normally you data lives. For a development box increase /home 
+Here's my personal preference for an allround Linux box. The following volume
+layout is a baseline. If the machine is a server reduce /home and add much more
+to /var where normally you data lives. For a development box increase /home
 for all your projects.<!--more-->
 
 I use the lvm2 package, so these commands use the most common options.
@@ -45,4 +44,3 @@ I use the lvm2 package, so these commands use the most common options.
 
 When you install / assign more than one drive you can must create a LVM partiton with fdisk and then you can extend the physical volume. It's up to you to extend the volume group too or create a second vg.
 In case of extenting the first vg you can extent the logical volume where the space is needed. If you have installed an application you can also dedicate a logical volume to that application and mount it where approbiate.
-

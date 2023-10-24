@@ -1,13 +1,16 @@
 ---
-categories: 
+categories:
     - ubuntu
     - git
 date: "2014-09-22T00:00:00Z"
 lastmod:
     - :git
 description: How to install a recent Git version on Ubuntu.
-tags: 
-    - git
+authors:
+  - claus-gerull
+tags:
+  - development
+  - linux
 title: Git for Ubuntu
 draft: false
 ---

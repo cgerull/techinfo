@@ -3,16 +3,18 @@ categories:
     - git
 date: "2019-08-05T08:13:17Z"
 description: Two ways to install a recent Git version on CentOS.
-tags: 
-    - git
-    - centos
+authors:
+  - claus-gerull
+tags:
+    - development
+    - linux
 title: Install a recent Git on CentOS 7
 draft: false
 ---
 
 CentOS 7 as well as RedHat 7 has very old Git version (1.8.x) in the official repositories. The
-most tools I use need at least Git > 2.0. 
-In this post I will describe in brief how to update your Git installation. Here I will describe just two 
+most tools I use need at least Git > 2.0.
+In this post I will describe in brief how to update your Git installation. Here I will describe just two
 of the possbile solutions. Install from source and install from the [IUS](https://ius.io/) repositories.
 <!--more-->
 

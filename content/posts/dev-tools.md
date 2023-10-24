@@ -3,11 +3,10 @@ categories:
   - devops
 date: "2019-12-25T16:13:17Z"
 description: Useful dev tools and their setup on different platforms.
+authors:
+  - claus-gerull
 tags:
-  - linux
-  - macos
-  - windows
-  - tools
+  - development
 title: Development tools
 draft: false
 ---
@@ -58,7 +57,7 @@ Install a recent version via `sudo apt-get update && sudo apt-get install git`.
 
 ### Python
 
-Python 3 should be in the base package. To develop with Python you need pip3 and virtual environment as well. Just install it via `sudo apt-get update && sudo apt-get install python3-pip python3-virtualenvironment` 
+Python 3 should be in the base package. To develop with Python you need pip3 and virtual environment as well. Just install it via `sudo apt-get update && sudo apt-get install python3-pip python3-virtualenvironment`
 
 Other packages can be installed via pip.
 
@@ -69,7 +68,7 @@ As I'm not a cutting edge JS developer so the LTS version is for my purpose suff
 
 ### Docker
 
-On Ubuntu I like to use a recent Docker-CE version. 
+On Ubuntu I like to use a recent Docker-CE version.
 
 ```bash
 # Frist remove any installed version
@@ -91,7 +90,7 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-   
+
  # Now your ready to install Docker-CE
  sudo apt-get update && sudo apt-get install docker-ce
 ```

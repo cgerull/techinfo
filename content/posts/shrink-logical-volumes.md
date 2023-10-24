@@ -4,11 +4,10 @@ categories:
 comment: false
 date: "2014-04-08T00:00:00Z"
 description: Use LVM2 to shrink volumes on the fly.
+authors:
+  - claus-gerull
 tags:
-  - file system
-  - install
   - linux
-  - lvm
 title: Shrink logic volumes
 draft: false
 ---
@@ -22,7 +21,7 @@ The order of shrinking is just the reverse of expanding:
 * shrink file system
 * shrink logic volume.
 
-> **Before you start make sure you have recent backup of the disk.** 
+> **Before you start make sure you have recent backup of the disk.**
 
 ## The steps in detail
 
